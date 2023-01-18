@@ -1,0 +1,43 @@
+plugins {
+    id 'java'
+    id "com.github.johnrengelman.shadow" version "7.1.2"
+    id "io.freefair.lombok" version "6.6.1"
+}
+
+group = 'com.vova7865'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'papermc-repo'
+        url = 'https://repo.papermc.io/repository/maven-public/'
+    }
+    maven {
+        name = 'sonatype'
+        url = 'https://oss.sonatype.org/content/groups/public/'
+    }
+    maven {
+        url "https://repo.dmulloy2.net/repository/public/"
+    }
+}
+
+dependencies {
+    implementation 'org.mongodb:mongodb-driver-sync:4.8.2'
+
+    compileOnly 'com.destroystokyo.paper:paper-api:1.12.2-R0.1-SNAPSHOT'
+
+    compileOnly group: "com.comphenix.protocol", name: "ProtocolLib", version: "4.7.0"
+}
+
+def targetJavaVersion = 8
+java {
+    def javaVersion = JavaVersion.toVersion(targetJavaVersion)
+    sourceCompatibility = javaVersion
+    targetCompatibility = javaVersion
+    if (JavaVersion.current() < javaVersion) {
+        toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
+    }
+}
+
+tasks.build.dependsOn(tasks.shadowJar)

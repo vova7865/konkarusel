@@ -1,0 +1,21 @@
+name: Konkarusel
+version: '1.0'
+main: com.vova7865.konkarusel.Konkarusel
+depend:
+  - ProtocolLib
+
+commands:
+  carousel:
+    usage: "Usage: \n
+        /carousel add <id: string> |\n
+        /carousel clear |\n
+        /carousel dump <id: string> |\n
+        /carousel edit <id: string> {\n
+            <horseCount|radius|verticalStretch|speed> <val: int> |\n
+            <color|style> <val: enum>\n
+        } |\n
+        /carousel remove <id: string>"
+    description: "Add, modify, or remove carousels"
+  rides:
+    usage: "Usage: /rides"
+    description: "Show rides from mongodb"

@@ -1,0 +1,3 @@
+database:
+  connectionString: mongodb://root@127.0.0.1:27017/
+carousels: {}
